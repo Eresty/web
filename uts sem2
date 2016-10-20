@@ -1,0 +1,89 @@
+<h1>Soal Nomor 1 :</h1>
+			coba dan oke
+			<?php 
+				$text1="Orang mukmin adalah sebaik-baik makhluk dalam memanfaatkan dunia. Baginya, dunia bukanlah tempat untuk mencari kepuasan lahiriyah
+				semata, karena ada hal yang lebih penting dari sekedar kesenangan duniawi. Menurutnya, kebahagiaan tidak terletak pada materi, namun lebih pada 
+				ketentraman hati. Yaitu hati yang disirami oleh cahaya keimanan, hati yang tersentuh oleh panggilan ilahi. Itulah sumber kebahagiaan. 
+				Oleh karena itu, ia tidak memandang dunia sebagai tujuan utama hidupnya. Dunia adalah tempat baginya untuk menyusun dan merencanakan 
+				hari esoknya yang lebih cerah. Ketika manusia tertunduk lesu menyesali apa yang telah mereka lakukan dengan muka pucat kebingungan mencari - cari 
+				suaka dan pertolongan, ia dengan 'gagah' menegakkan wajahnya karena mendapatkan apa yang dulu dijanjikan. Ketika manusia satu persatu dihinakan di 
+				hadapan seluruh makhluk sebagai akibat atas apa yang telah diperbuat, ia dengan tenangnya menghadapi semua itu tanpa rintangan. Ya, itulah hari 
+				perhitungan atau dalam istilah syar'i <i>\"Yaumul Hisab\"</i>. Hari ditimbangnya amalan manusia. Dan hal itu semua tidak akan terjadi kecuali 
+				karena ia menjadikan dunia bukan sebagai tujuan utamanya. (sumber : muslim.or.id)";
+				echo "<p>$text1</p>";
+				echo "<form method=\"post\" action=\"index.php\" name=\"no1\">";
+					echo "Masukkan Kata = <input type=\"text\" name=\"key\" required=\"required\" /> <input type=\"submit\" name=\"hitung\" value=\"Hitung!\" />";
+				echo "</form>";
+				if($_POST['hitung'])
+				{
+					$key=$_POST['key'];
+					echo "Kata $key ada = ";
+					echo substr_count(strtoupper($text1), strtoupper($key));
+				}
+			?>
+<h1>Soal Nomor 2 :</h1>
+			<h3>Versi Explode</h3>
+			<?php 
+				$kitaba="Riyadus Sholihin,Minhajul Muslim,Tafsir Ibnu Katsir,Siroh Nabawiyah";
+			?>
+				<select name="tugas2">
+					<?php
+						$array_kitab=explode(",",$kitaba);
+						$jum_judul=count($array_kitab);
+						for($i=0;$i<$jum_judul;$i++)
+						{
+							echo "<option value=\"$i\">$array_kitab[$i]</option>";
+						}
+					?>
+				</select>
+			<h3>Versi Implode</h3>
+			<?php
+				$kitab_v2=implode(",",$array_kitab);
+				echo "<select name=\"tugas2\">";
+				$pregg="</option><option value=\"\">";
+					$coblos=str_replace(',',$pregg,$kitab_v2);
+					echo "<option value=\"\">$coblos</option>";
+				echo "</select>";
+			?>
+
+Note : Aku mbulet tekan kene, bingung explode po implode, cobo versi kanca2 liane ya :v
+<h1>Soal Nomor 3 :</h1>
+			<?php
+				$kendaraan=array(
+                "Roda Dua" =>array(
+                            "Sepeda Motor" =>array("Kawasaki"=>3, "Honda"=>4, "Suzuki"=>6, "Yamaha"=>4),
+                            "Sepeda Onthel"=>array("Octagon"=>7, "Polygon"=>9)
+                            ),
+                "Roda Empat"=>array(
+                            "Bus"=>array("Fuso"=>11, "Umo"=>12, "Huge"=>33),
+                            "Truk"=>array("Mitsubishi"=>5, "Hyundai"=>8),
+                            "Sedan"=>array("Vios"=>23, "Camry"=>1)
+                            )
+                );
+				echo "<h3>Tabel Kendaraan</h3>";
+				echo "<div class=\"temp_kend\">";
+					foreach($kendaraan as $jumlahroda => $jwabjumlahroda)
+					{
+						echo "<div class=\"\">";
+						echo "<h3>$jumlahroda</h3>";
+						foreach($jwabjumlahroda as $jummroda => $jumlahyangada)
+						{
+							echo "<div class=\"\">";
+							echo "<b>$jummroda</b>";
+							foreach($jumlahyangada as $namakend => $jummerk)
+							{
+								echo "<div class=\"\">";
+								echo "- $namakend ($jummerk)";
+								echo "</div>";
+							}
+							echo "<div class=\"clear\"></div>";
+							echo "</div>";
+						}
+						echo "<div class=\"clear\"></div>";
+						echo "</div>";
+					}
+					echo "<div class=\"clear\"></div>";
+				echo "</div>";
+				echo "<hr>";
+				print_r(array_keys($kendaraan));
+			?>
